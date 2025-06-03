@@ -287,7 +287,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1418836875}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84c76e8d6f912b245a3599caef366cec, type: 3}
+  m_Script: {fileID: 11500000, guid: cd88bdee437e1e94b816de200f25e78e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   videoPlayer: {fileID: 1418836876}
