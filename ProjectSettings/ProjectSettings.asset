@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 28
-  productGUID: 3501159ed2f33e944a70fb93f7a0e8f0
+  productGUID: d60e18308a27ee64abba0dfef3851329
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -852,14 +852,14 @@ PlayerSettings:
   editorAssembliesCompatibilityLevel: 1
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: HAL_Project
+  metroPackageName: HAL
   metroPackageVersion: 
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
   metroCertificateIssuer: 
   metroCertificateNotAfter: 0000000000000000
-  metroApplicationDescription: HAL_Project
+  metroApplicationDescription: HAL
   wsaImages: {}
   metroTileShortName: 
   metroTileShowName: 0
@@ -935,7 +935,7 @@ PlayerSettings:
   cloudProjectId: d6922852-19bc-4221-9bde-340733691a29
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: HAL_Project 2025-06-02_18-02-36
+  projectName: 
   organizationId: binzdapoet0209_unity
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
