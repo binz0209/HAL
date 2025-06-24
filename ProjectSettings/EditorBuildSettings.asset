@@ -6,16 +6,16 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Intro.unity
+    path: Assets/Scenes/Menu/Intro.unity
     guid: ea0917a8bed2bd54a9a7e7b74414aace
   - enabled: 1
-    path: Assets/Scenes/MainMenu.unity
+    path: Assets/Scenes/Menu/MainMenu.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/NewGame_1_EnterName.unity
+    path: Assets/Scenes/Menu/NewGame_1_EnterName.unity
     guid: eff7faf18604cb94fae20bde5a1653d2
   - enabled: 1
-    path: Assets/Scenes/NewGame_2_Character.unity
+    path: Assets/Scenes/Menu/NewGame_2_Character.unity
     guid: 3f3f64f3375234944a1c1a761aedb9fc
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
