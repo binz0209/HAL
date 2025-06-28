@@ -22,6 +22,8 @@ public class HealthManager : MonoBehaviour
         healthAmount -= damage;
         healthAmount = Mathf.Clamp(healthAmount, 0, 100);
         Health.fillAmount = healthAmount / 100f;
+        AudioManager.Instance?.PlayDamaged();
+
     }
 
     public void Heal(float healingAmount)
