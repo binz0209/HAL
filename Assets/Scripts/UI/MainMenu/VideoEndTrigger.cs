@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement; // Để sử dụng SceneManager
 public class VideoEndTrigger : MonoBehaviour
 {
     public VideoPlayer videoPlayer;
-    public string sceneToLoad = "Scenes/MainMenu";
+    public int sceneToLoad = 1;
 
     void Start()
     {

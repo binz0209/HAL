@@ -662,6 +662,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 794433851}
   m_CullTransparentMesh: 1
+--- !u!1 &819163533
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 819163535}
+  - component: {fileID: 819163534}
+  m_Layer: 0
+  m_Name: LoadingManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &819163534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 819163533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66107958ba37a8f44b278c5299035557, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextSceneName: Map_1
+--- !u!4 &819163535
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 819163533}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.06593, y: 0.23473, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &860283154
 GameObject:
   m_ObjectHideFlags: 0
@@ -798,6 +843,81 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 860283154}
   m_CullTransparentMesh: 1
+--- !u!1 &943267553
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 943267556}
+  - component: {fileID: 943267555}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &943267555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 943267553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c0129928e8ac7942a4b4f0256b66878, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentData:
+    playerName: 
+    selectedCharacter: 
+    currentMapLevel: 1
+    gold: 0
+    unspentSkillPoints: 0
+    healthLevel: 1
+    powerLevel: 1
+    attackSpeedLevel: 1
+    moveSpeedLevel: 1
+    backPath: 
+    clothBodyPath: 
+    bodyArmorPath: 
+    hairPath: 
+    headPath: 
+    faceHairPath: 
+    rightEyePath: 
+    leftEyePath: 
+    leftArmClothPath: 
+    leftShoulderArmorPath: 
+    weaponLeftPath: 
+    shieldLeftPath: 
+    rightArmClothPath: 
+    rightShoulderArmorPath: 
+    weaponRightPath: 
+    shieldRightPath: 
+    rightFootPath: 
+    rightClothPath: 
+    leftFootPath: 
+    leftClothPath: 
+  pendingPlayerName: 
+--- !u!4 &943267556
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 943267553}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.16803, y: -0.5976, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &970489391
 GameObject:
   m_ObjectHideFlags: 0
@@ -1053,6 +1173,7 @@ GameObject:
   - component: {fileID: 1361320475}
   - component: {fileID: 1361320474}
   - component: {fileID: 1361320473}
+  - component: {fileID: 1361320476}
   m_Layer: 5
   m_Name: Quit_Button
   m_TagString: Untagged
@@ -1124,7 +1245,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1361320474}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1361320476}
+        m_TargetAssemblyTypeName: MainMenuUI, Assembly-CSharp
+        m_MethodName: OnClickQuit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1361320474
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1163,6 +1296,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1361320471}
   m_CullTransparentMesh: 1
+--- !u!114 &1361320476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1361320471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1808790284ab5c4895c30cd0baef396, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  continueButton: {fileID: 1361320473}
 --- !u!1 &1487416711
 GameObject:
   m_ObjectHideFlags: 0
@@ -1311,6 +1457,7 @@ GameObject:
   - component: {fileID: 1549928812}
   - component: {fileID: 1549928811}
   - component: {fileID: 1549928810}
+  - component: {fileID: 1549928813}
   m_Layer: 5
   m_Name: Continue_Button
   m_TagString: Untagged
@@ -1382,7 +1529,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1549928811}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1549928813}
+        m_TargetAssemblyTypeName: MainMenuUI, Assembly-CSharp
+        m_MethodName: OnClickContinue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1549928811
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1421,6 +1580,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1549928808}
   m_CullTransparentMesh: 1
+--- !u!114 &1549928813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1549928808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1808790284ab5c4895c30cd0baef396, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  continueButton: {fileID: 1549928810}
 --- !u!1 &1846747531
 GameObject:
   m_ObjectHideFlags: 0
@@ -1626,6 +1798,8 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 519420032}
+  - {fileID: 943267556}
+  - {fileID: 819163535}
   - {fileID: 588199375}
   - {fileID: 1978201090}
   - {fileID: 1054990509}
