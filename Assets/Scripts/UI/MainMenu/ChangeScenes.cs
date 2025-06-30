@@ -24,13 +24,13 @@ public class ChangeScene : MonoBehaviour
             switch (data.currentMapLevel)
             {
                 case 1:
-                    mapToLoad = "Map_1";
+                    mapToLoad = "Scenes/InGame/Map_1";
                     break;
                 case 2:
-                    mapToLoad = "Map_2";
+                    mapToLoad = "Scenes/InGame/Map_2";
                     break;
                 default:
-                    mapToLoad = "Map_1"; // fallback
+                    mapToLoad = "Scenes/InGame/Map_1"; // fallback
                     break;
             }
 

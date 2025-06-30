@@ -13,16 +13,23 @@ MonoBehaviour:
   m_Name: VanAn_Default
   m_EditorClassIdentifier: 
   id: TuLinh
-  backPath: '7_Back/Back_1.png '
-  clothBodyPath: '2_Cloth/Cloth_3.png '
-  bodyArmorPath: '5_Armor/Armor_2.png '
-  hairPath: '0_Hair/Hair_1.png '
-  headPath: '1_Body/Human_1.png '
-  faceHairPath: 
-  eyePath: '0_Eye/Eye2.png '
-  armClothPath: '2_Cloth/Cloth_3.png '
-  shoulderArmorPath: '5_Armor/Armor_2.png '
-  weaponPath: '6_Weapons/0_Sword/Sword_1.png '
-  shieldPath: '6_Weapons/7_Shield/WoodShield1.png '
-  footPath: '1_Body/Human_1.png '
-  footClothPath: '3_Pant/Foot_2.png '
+  backPath: 7_Back/Back_1
+  clothBodyPath: 2_Cloth/Cloth_9
+  bodyArmorPath: 5_Armor/Armor_5
+  hairPath: 
+  headPath: 1_Body/Human_1
+  faceHairPath: 1_FaceHair/FaceHair_1
+  rightEyePath: 0_Eye/Eye2
+  leftEyePath: 0_Eye/Eye2
+  leftArmClothPath: 2_Cloth/Cloth_3
+  leftShoulderArmorPath: 5_Armor/Armor_2
+  weaponLeftPath: 
+  shieldLeftPath: 6_Weapons/7_Shield/WoodShield1
+  rightArmClothPath: 2_Cloth/Cloth_3
+  rightShoulderArmorPath: 5_Armor/Armor_2
+  weaponRightPath: 6_Weapons/0_Sword/Sword_1
+  shieldRightPath: 
+  rightFootPath: 1_Body/Human_1
+  rightClothPath: 3_Pant/Foot_2
+  leftFootPath: 1_Body/Human_1
+  leftClothPath: 3_Pant/Foot_2

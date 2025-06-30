@@ -3,7 +3,7 @@ using UnityEngine;
 public class CharacterPreviewSpawner : MonoBehaviour
 {
     [Header("Prefab to spawn")]
-    [SerializeField] private GameObject spumPrefab; // Prefab rỗng
+    [SerializeField] private GameObject spumPrefab;
 
     [Header("Where to spawn preview")]
     [SerializeField] private Transform previewPoint;
