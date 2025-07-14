@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8658e9db859f1e24494bf395bdac6083, type: 3}
+  m_Name: TuLinh_CharacterData
+  m_EditorClassIdentifier: 
+  characterID: TuLinh
+  displayName: 
+  spumPrefab: {fileID: 5836857197505123814, guid: de5fd31d217351446abe758d759f6e27,
+    type: 3}
+  baseHealthLevel: 1
+  basePowerLevel: 1
+  baseAttackSpeedLevel: 1
+  baseMoveSpeedLevel: 1
+  defaultPartData: {fileID: 11400000, guid: e757c5e026c82c748a200a5cc2abe326, type: 2}
