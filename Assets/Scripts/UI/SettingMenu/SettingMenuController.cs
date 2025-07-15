@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SettingsMenuController : MonoBehaviour
 {
@@ -16,7 +17,10 @@ public class SettingsMenuController : MonoBehaviour
         bool isActive = settingsMenu.activeSelf;
         settingsMenu.SetActive(!isActive);
     }
-
+    public void GoToMainMenuScenes()
+    {
+        SceneManager.LoadScene(1);
+    }
     public void OnClickQuit()
     {
         Application.Quit();
