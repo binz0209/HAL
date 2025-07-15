@@ -1,4 +1,4 @@
-using System.IO;
+﻿using System.IO;
 using UnityEngine;
 
 public class SaveManager : MonoBehaviour
@@ -65,4 +65,5 @@ public class SaveManager : MonoBehaviour
         string fullPath = Path.Combine(saveDirectory, saveFileName);
         return File.Exists(fullPath);
     }
+
 }

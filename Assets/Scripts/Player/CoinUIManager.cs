@@ -1,16 +1,40 @@
-using UnityEngine;
+﻿using UnityEngine;
+using TMPro;
 
 public class CoinUIManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public static CoinUIManager Instance;
+    private int coin;
+
+    public TextMeshProUGUI goldText;  // <- TextMeshPro
+
+    private void Awake()
     {
-        
+        if (Instance == null)
+        {
+            Instance = this;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        LoadGold();
+    }
+
+    public void LoadGold()
+    {
+        if (SaveManager.Instance != null && SaveManager.Instance.currentData != null)
+        {
+            coin = SaveManager.Instance.currentData.gold;
+            UpdateGoldDisplay(coin);
+        }
+    }
+
+    public void UpdateGoldDisplay(int goldAmount)
+    {
+        if (goldText != null)
+        {
+            goldText.text = goldAmount.ToString();  // hoặc "x " + goldAmount
+        }
     }
 }
