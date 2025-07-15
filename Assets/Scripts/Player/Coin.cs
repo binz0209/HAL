@@ -32,16 +32,10 @@ public class Coin : MonoBehaviour
 
         if (other.CompareTag("Player"))
         {
-            if (SaveManager.Instance != null && SaveManager.Instance.currentData != null)
+            // Gọi cập nhật Coin
+            if (CoinUIManager.Instance != null)
             {
-                SaveManager.Instance.currentData.gold += 1;
-                SaveManager.Instance.Save();
-
-                // Gọi cập nhật UI
-                if (CoinUIManager.Instance != null)
-                {
-                    CoinUIManager.Instance.UpdateGoldDisplay(SaveManager.Instance.currentData.gold);
-                }
+                CoinUIManager.Instance.IncreaseCoinValue();
             }
             Destroy(gameObject);
         }

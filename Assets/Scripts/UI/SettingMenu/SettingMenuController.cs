@@ -1,14 +1,20 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class SettingsMenuController : MonoBehaviour
 {
     public GameObject settingsMenu;  // Đối tượng menu cài đặt
+    public TMP_Text healthText;
+    public TMP_Text damageText;
 
+    private SaveData playerData;
     void Start()
     {
-        // Ẩn menu cài đặt khi bắt đầu trò chơi
         settingsMenu.SetActive(false);
+        playerData = SaveManager.Instance.currentData;
+        healthText.text = "HP: " + playerData.healthLevel.ToString();
+        damageText.text = "DMG: " + playerData.powerLevel.ToString();
     }
 
     public void ToggleSettingsMenu()

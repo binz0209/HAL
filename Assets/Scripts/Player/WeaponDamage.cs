@@ -12,7 +12,7 @@ public class WeaponDamage : MonoBehaviour
 
         if (enemyHealth != null)
         {
-            enemyHealth.TakeDamage(damage);
+            enemyHealth.TakeDamage(SaveManager.Instance.currentData.powerLevel);
         }
 
         if (enemyFollow != null)

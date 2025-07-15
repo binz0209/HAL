@@ -64,26 +64,11 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-public void PlayAttack(string weaponType)
+    public void PlayAttack()
     {
         AudioClip clipToPlay = null;
-        switch (weaponType)
-        {
-            case "Sword":
-                clipToPlay = swordClip; // Replace with actual sword attack clip if available
-                break;
-            case "Axe":
-                clipToPlay = axeClip; // Replace with actual bow attack clip if available
-                break;
-            default:
-                clipToPlay = attackClip;
-                break;
-        }
-
-        if (sfxSource && clipToPlay)
-        {
-            sfxSource.PlayOneShot(clipToPlay);
-        }
+        clipToPlay = swordClip;
+        sfxSource.PlayOneShot(swordClip);
     }
 
     public void PlayDamaged()

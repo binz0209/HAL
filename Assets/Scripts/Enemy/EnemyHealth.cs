@@ -55,7 +55,7 @@ public class EnemyHealth : MonoBehaviour
         if (rb != null)
         {
             rb.linearVelocity = Vector2.zero;
-            rb.isKinematic = true;
+            //rb.isKinematic = true;
             rb.simulated = false;
         }
 

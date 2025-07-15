@@ -13,6 +13,7 @@ public class HealthManager : MonoBehaviour
         // Tự động tìm Canvas → Health
         if (Health == null)
         {
+            healthAmount = SaveManager.Instance.currentData.healthLevel;
             GameObject canvas = GameObject.Find("Canvas");
             if (canvas != null)
             {
@@ -40,9 +41,10 @@ public class HealthManager : MonoBehaviour
     public void TakeDamage(float damage, Vector2 knockbackDir, float knockbackForce = 10f)
     {
         healthAmount -= damage;
-        healthAmount = Mathf.Clamp(healthAmount, 0, 100);
+        healthAmount = Mathf.Clamp(healthAmount, 0, SaveManager.Instance.currentData.healthLevel);
         if (Health != null)
-            Health.fillAmount = healthAmount / 100f;
+            Health.fillAmount = healthAmount / SaveManager.Instance.currentData.healthLevel;
+        AudioManager.Instance.PlayDamaged();
     }
 
     void OnTriggerEnter2D(Collider2D collision)

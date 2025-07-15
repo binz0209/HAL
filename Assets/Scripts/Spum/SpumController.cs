@@ -92,7 +92,6 @@ public class SpumController : MonoBehaviour
 
         foreach (var s in allSprites)
         {
-            Debug.Log($"🔎 Found SubSprite: {s.name} in {fullPath}");
             if (s.name == subName)
             {
                 return s;

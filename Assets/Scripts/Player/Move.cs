@@ -39,6 +39,7 @@ public class PlayerMovement : MonoBehaviour
         // Check if the object has the "Teleport" tag
         if (other.CompareTag("Teleport"))
         {
+            SaveManager.Instance.currentData.gold += CoinUIManager.Instance.getCoinValue();
             SaveManager.Instance.currentData.currentMapLevel++;
             SaveManager.Instance.Save();
             SceneManager.LoadScene(7);

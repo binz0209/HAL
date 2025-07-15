@@ -291,7 +291,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   videoPlayer: {fileID: 1418836876}
-  sceneToLoad: Scenes/MainMenu
+  sceneToLoad: 1
 --- !u!1 &1506832595
 GameObject:
   m_ObjectHideFlags: 0

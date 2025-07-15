@@ -27,6 +27,7 @@ public class Player_Combat : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.J) && !isAttacking)
         {
             animator?.SetTrigger("2_Attack");
+            AudioManager.Instance.PlayAttack();
             isAttacking = true;
         }
     }

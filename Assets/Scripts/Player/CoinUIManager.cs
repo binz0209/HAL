@@ -7,7 +7,9 @@ public class CoinUIManager : MonoBehaviour
     private int coin;
 
     public TextMeshProUGUI goldText;  // <- TextMeshPro
+    public TextMeshProUGUI levelText;
 
+    private int coinValue = 0;
     private void Awake()
     {
         if (Instance == null)
@@ -18,6 +20,7 @@ public class CoinUIManager : MonoBehaviour
 
     private void Start()
     {
+        levelText.text = "Level: " + SaveManager.Instance.currentData.currentMapLevel.ToString();
         LoadGold();
     }
 
@@ -30,6 +33,17 @@ public class CoinUIManager : MonoBehaviour
         }
     }
 
+    //increse coin value
+    public void IncreaseCoinValue()
+    {
+        coinValue += 1;
+        UpdateGoldDisplay(SaveManager.Instance.currentData.gold + coinValue);
+    }
+
+    public int getCoinValue()
+    {
+        return coinValue;
+    }
     public void UpdateGoldDisplay(int goldAmount)
     {
         if (goldText != null)

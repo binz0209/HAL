@@ -7,6 +7,8 @@ public class ShopUI : MonoBehaviour
     public TMP_Text healthText;
     public TMP_Text damageText;
     public TMP_Text coinText;
+    public TMP_Text healthCost;
+    public TMP_Text damageCost;
 
     // References to the player's data (could be fetched from SaveManager or PlayerCharacterData)
     private SaveData playerData;
@@ -20,11 +22,12 @@ public class ShopUI : MonoBehaviour
         UpdateUI();
     }
 
-    void UpdateUI()
+    public void UpdateUI()
     {
-        // Update the health, damage, and coin values based on the player's data
         healthText.text = "HP: " + playerData.healthLevel.ToString();
-        damageText.text = "DMG: " + playerData.powerLevel.ToString(); // Assuming powerLevel is damage
+        damageText.text = "DMG: " + playerData.powerLevel.ToString();
         coinText.text = playerData.gold.ToString();
+        healthCost.text = (((playerData.healthLevel - 100) / 10)*2 + 5).ToString() + "G";
+        damageCost.text = (((playerData.powerLevel - 5) / 5)*4 + 10).ToString() + "G";
     }
 }
