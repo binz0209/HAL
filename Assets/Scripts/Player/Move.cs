@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour
@@ -31,5 +32,16 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {        
         rb.MovePosition(rb.position + moveInput * moveSpeed * Time.fixedDeltaTime);
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        // Check if the object has the "Teleport" tag
+        if (other.CompareTag("Teleport"))
+        {
+            SaveManager.Instance.currentData.currentMapLevel++;
+            SaveManager.Instance.Save();
+            SceneManager.LoadScene(7);
+        }
     }
 }
