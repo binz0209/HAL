@@ -8,11 +8,19 @@ public class EnemyTrigger : MonoBehaviour
     [Header("Door Settings")]
     public Collider2D doorCollider;
 
+    private Animator doorAnimator;
     private bool roomLocked = false;
+    private bool doorOpened = false;
 
     public static int enemyCount;
 
-
+    private void Start()
+    {
+        if (doorCollider != null)
+        {
+            doorAnimator = doorCollider.GetComponent<Animator>();
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -40,16 +48,22 @@ public class EnemyTrigger : MonoBehaviour
 
         Debug.Log("Enemy Count: " + enemyCount);
 
-
+        // 🔒 Lock cửa vật lý
         if (doorCollider != null)
         {
             doorCollider.isTrigger = false;
             Debug.Log("Door locked (isTrigger = false)");
+
+            // ▶️ Chạy animation mở cửa MỘT LẦN
+            if (!doorOpened && doorAnimator != null)
+            {
+                doorAnimator.SetTrigger("Open");
+                Debug.Log("Door animation: Open triggered");
+                doorOpened = true;
+            }
         }
 
         roomLocked = true;
-
-
     }
 
     private void Update()
@@ -86,9 +100,7 @@ public class EnemyTrigger : MonoBehaviour
         if (doorCollider != null)
         {
             doorCollider.isTrigger = true;
-            Debug.Log("Door unlocked (isTrigger = true)");
+            Debug.Log("Door collider re-enabled (isTrigger = true)");
         }
-
-
     }
 }
