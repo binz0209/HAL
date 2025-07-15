@@ -1,7 +1,11 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 public class EnemyTrigger : MonoBehaviour
 {
+    [Header("Teleport Settings")]
+    public GameObject teleportObject;
+
     [Header("Enemy Settings")]
     public Transform enemyGroup;
 
@@ -11,6 +15,7 @@ public class EnemyTrigger : MonoBehaviour
     private Animator doorAnimator;
     private bool roomLocked = false;
     private bool doorOpened = false;
+    private bool teleportSpawned = false;
 
     public static int enemyCount;
 
@@ -19,6 +24,11 @@ public class EnemyTrigger : MonoBehaviour
         if (doorCollider != null)
         {
             doorAnimator = doorCollider.GetComponent<Animator>();
+        }
+
+        if (teleportObject != null)
+        {
+            teleportObject.SetActive(false);
         }
     }
 
@@ -48,17 +58,13 @@ public class EnemyTrigger : MonoBehaviour
 
         Debug.Log("Enemy Count: " + enemyCount);
 
-        // 🔒 Lock cửa vật lý
         if (doorCollider != null)
         {
             doorCollider.isTrigger = false;
-            Debug.Log("Door locked (isTrigger = false)");
 
-            // ▶️ Chạy animation mở cửa MỘT LẦN
             if (!doorOpened && doorAnimator != null)
             {
                 doorAnimator.SetTrigger("Open");
-                Debug.Log("Door animation: Open triggered");
                 doorOpened = true;
             }
         }
@@ -68,7 +74,7 @@ public class EnemyTrigger : MonoBehaviour
 
     private void Update()
     {
-        if (!roomLocked) return;
+        if (!roomLocked || teleportSpawned) return;
 
         if (AllEnemiesDefeated())
         {
@@ -89,18 +95,52 @@ public class EnemyTrigger : MonoBehaviour
     public static void ReportEnemyDied()
     {
         enemyCount--;
-        Debug.Log("Enemy died. Remaining: " + enemyCount);
     }
 
     void UnlockRoom()
     {
-        Debug.Log("UnlockRoom() called");
         roomLocked = false;
 
         if (doorCollider != null)
         {
             doorCollider.isTrigger = true;
-            Debug.Log("Door collider re-enabled (isTrigger = true)");
+        }
+
+        if (teleportObject != null)
+        {
+            teleportSpawned = true;
+            StartCoroutine(FadeInTeleport());
         }
     }
+
+    IEnumerator FadeInTeleport()
+    {
+        SpriteRenderer sr = teleportObject.GetComponent<SpriteRenderer>();
+        if (sr == null)
+        {
+            Debug.LogWarning("Teleport object lacks SpriteRenderer!");
+            yield break;
+        }
+
+        teleportObject.SetActive(true);
+
+        Color color = sr.color;
+        color.a = 0f;
+        sr.color = color;
+
+        float duration = 1.5f;
+        float timer = 0f;
+
+        while (timer < duration)
+        {
+            color.a = Mathf.Lerp(0f, 1f, timer / duration);
+            sr.color = color;
+            timer += Time.deltaTime;
+            yield return null;
+        }
+
+        color.a = 1f;
+        sr.color = color;
+    }
+
 }
