@@ -3,9 +3,9 @@ using UnityEngine;
 public class Player_Combat : MonoBehaviour
 {
     private Animator animator;
-    public float knockbackForce = 10f;               // L?c knockback cho enemy khi player ?ánh
-    public float knockbackFromEnemyForce = 10f;      // L?c knockback khi b? enemy ?ánh
-    public float damageFromEnemy = 10f;              // Sát th??ng khi b? enemy ?ánh
+    public float knockbackForce = 10f;               // L?c knockback cho enemy khi player ?ï¿½nh
+    public float knockbackFromEnemyForce = 10f;      // L?c knockback khi b? enemy ?ï¿½nh
+    public float damageFromEnemy = 10f;              // Sï¿½t th??ng khi b? enemy ?ï¿½nh
 
     public Collider2D armCollider;
 
@@ -16,7 +16,7 @@ public class Player_Combat : MonoBehaviour
         animator = GetComponentInParent<Animator>();
 
         if (animator == null)
-            Debug.LogError("Animator không tìm th?y!");
+            Debug.LogError("Animator khï¿½ng tï¿½m th?y!");
 
         if (armCollider != null)
             armCollider.enabled = false;

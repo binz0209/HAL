@@ -526,6 +526,7 @@ GameObject:
   - component: {fileID: 409887666}
   - component: {fileID: 409887665}
   - component: {fileID: 409887664}
+  - component: {fileID: 409887667}
   m_Layer: 5
   m_Name: TuLinhButton
   m_TagString: Untagged
@@ -601,6 +602,9 @@ MonoBehaviour:
       - m_Target: {fileID: 691548943}
         m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
         m_MethodName: PlayClick
+      - m_Target: {fileID: 409887667}
+        m_TargetAssemblyTypeName: CharacterButton, Assembly-CSharp
+        m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -648,6 +652,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 409887662}
   m_CullTransparentMesh: 1
+--- !u!114 &409887667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 409887662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e10c862bd412d3145a042f8a002dbaf5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterData: {fileID: 11400000, guid: 5084c6b651d96544b85844b5113eac50, type: 2}
+  characterSelectUI: {fileID: 480314880}
 --- !u!1 &480314875
 GameObject:
   m_ObjectHideFlags: 0
@@ -660,6 +678,7 @@ GameObject:
   - component: {fileID: 480314879}
   - component: {fileID: 480314878}
   - component: {fileID: 480314877}
+  - component: {fileID: 480314880}
   m_Layer: 5
   m_Name: Go_Button
   m_TagString: Untagged
@@ -734,6 +753,9 @@ MonoBehaviour:
       - m_Target: {fileID: 691548943}
         m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
         m_MethodName: PlayClick
+      - m_Target: {fileID: 480314880}
+        m_TargetAssemblyTypeName: CharacterSelectUI, Assembly-CSharp
+        m_MethodName: OnLetsGo
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -781,6 +803,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 480314875}
   m_CullTransparentMesh: 1
+--- !u!114 &480314880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 480314875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 063bd8a62ab46914bba6c2a249599901, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedCharacter: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -980,6 +1015,7 @@ GameObject:
   - component: {fileID: 793430123}
   - component: {fileID: 793430122}
   - component: {fileID: 793430121}
+  - component: {fileID: 793430124}
   m_Layer: 5
   m_Name: TuLinhButton
   m_TagString: Untagged
@@ -1055,6 +1091,9 @@ MonoBehaviour:
       - m_Target: {fileID: 691548943}
         m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
         m_MethodName: PlayClick
+      - m_Target: {fileID: 793430124}
+        m_TargetAssemblyTypeName: CharacterButton, Assembly-CSharp
+        m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1102,6 +1141,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 793430119}
   m_CullTransparentMesh: 1
+--- !u!114 &793430124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 793430119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e10c862bd412d3145a042f8a002dbaf5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterData: {fileID: 11400000, guid: 80929ebd13f109945ab4c8daaa8a80dd, type: 2}
+  characterSelectUI: {fileID: 480314880}
 --- !u!1 &810954969
 GameObject:
   m_ObjectHideFlags: 0
@@ -1215,7 +1268,7 @@ PrefabInstance:
     - target: {fileID: 3431018974941178782, guid: c54b36ee7861c4b41bd1dabf2455160f,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.81
+      value: 2.8
       objectReference: {fileID: 0}
     - target: {fileID: 3431018974941178782, guid: c54b36ee7861c4b41bd1dabf2455160f,
         type: 3}
@@ -1240,12 +1293,12 @@ PrefabInstance:
     - target: {fileID: 3431018974941178782, guid: c54b36ee7861c4b41bd1dabf2455160f,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.06048584
+      value: 0.06
       objectReference: {fileID: 0}
     - target: {fileID: 3431018974941178782, guid: c54b36ee7861c4b41bd1dabf2455160f,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -1.8826294
+      value: -1.9
       objectReference: {fileID: 0}
     - target: {fileID: 3431018974941178782, guid: c54b36ee7861c4b41bd1dabf2455160f,
         type: 3}
@@ -1399,6 +1452,31 @@ PrefabInstance:
     - target: {fileID: 2736129761976189646, guid: 35dd3fb4ba4d64845bc8225ae1796b6a,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4030278023110883241, guid: 35dd3fb4ba4d64845bc8225ae1796b6a,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4030278023110883241, guid: 35dd3fb4ba4d64845bc8225ae1796b6a,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.32941177
+      objectReference: {fileID: 0}
+    - target: {fileID: 4030278023110883241, guid: 35dd3fb4ba4d64845bc8225ae1796b6a,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4030278023110883241, guid: 35dd3fb4ba4d64845bc8225ae1796b6a,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.8235294
+      objectReference: {fileID: 0}
+    - target: {fileID: 4030278023110883241, guid: 35dd3fb4ba4d64845bc8225ae1796b6a,
+        type: 3}
+      propertyPath: m_WasSpriteAssigned
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6873661223484744056, guid: 35dd3fb4ba4d64845bc8225ae1796b6a,
@@ -1831,6 +1909,7 @@ GameObject:
   - component: {fileID: 992114409}
   - component: {fileID: 992114408}
   - component: {fileID: 992114407}
+  - component: {fileID: 992114410}
   m_Layer: 5
   m_Name: TuLinhButton
   m_TagString: Untagged
@@ -1906,6 +1985,9 @@ MonoBehaviour:
       - m_Target: {fileID: 691548943}
         m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
         m_MethodName: PlayClick
+      - m_Target: {fileID: 992114410}
+        m_TargetAssemblyTypeName: CharacterButton, Assembly-CSharp
+        m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1953,6 +2035,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 992114404}
   m_CullTransparentMesh: 1
+--- !u!114 &992114410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 992114404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e10c862bd412d3145a042f8a002dbaf5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterData: {fileID: 11400000, guid: efd79caa965daad4da2fc546abebcb80, type: 2}
+  characterSelectUI: {fileID: 480314880}
 --- !u!1 &1051379466
 GameObject:
   m_ObjectHideFlags: 0

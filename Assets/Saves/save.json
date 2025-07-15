@@ -1,0 +1,13 @@
+{
+    "playerName": "Test1",
+    "selectedCharacter": "",
+    "currentMapLevel": 1,
+    "gold": 0,
+    "unspentSkillPoints": 0,
+    "equippedSword": "",
+    "equippedArmor": "",
+    "healthLevel": 1,
+    "powerLevel": 1,
+    "attackSpeedLevel": 1,
+    "moveSpeedLevel": 1
+}

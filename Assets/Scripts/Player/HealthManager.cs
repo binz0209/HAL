@@ -1,46 +1,36 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class HealthManager : MonoBehaviour
 {
-    public Image Health;
-    public float healthAmount = 100f;
-    public float damageOnCollision = 20f;
+	public Image Health;
+	public float healthAmount = 100f;
+	public float damageOnCollision = 10f;
 
-    void Update()
-    {
-        if (healthAmount <= 0)
-        {
+	void Update()
+	{
+		if (healthAmount <= 0)
+		{
+			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+		}
+	}
 
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        }
-    }
+	public void TakeDamage(float damage, Vector2 knockbackDir, float knockbackForce = 10f)
+	{
+		healthAmount -= damage;
+		healthAmount = Mathf.Clamp(healthAmount, 0, 100);
+		if (Health != null)
+			Health.fillAmount = healthAmount / 100f;
+    AudioManager.Instance?.PlayDamaged();
+	}
 
-    public void TakeDamage(float damage)
-    {
-        healthAmount -= damage;
-        healthAmount = Mathf.Clamp(healthAmount, 0, 100);
-        Health.fillAmount = healthAmount / 100f;
-        AudioManager.Instance?.PlayDamaged();
-
-    }
-
-    public void Heal(float healingAmount)
-    {
-        healthAmount += healingAmount;
-        healthAmount = Mathf.Clamp(healthAmount, 0, 100);
-        Health.fillAmount = healthAmount / 100f;
-    }
-
-
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Enemy"))
-        {
-            TakeDamage(damageOnCollision);
-        }
-    }
-
-
+	void OnTriggerEnter2D(Collider2D collision)
+	{
+		if (collision.CompareTag("Enemy_We"))
+		{
+			Vector2 knockbackDir = transform.position - collision.transform.position;
+			TakeDamage(damageOnCollision, knockbackDir);
+		}
+	}
 }

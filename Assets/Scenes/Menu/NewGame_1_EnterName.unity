@@ -412,6 +412,7 @@ GameObject:
   - component: {fileID: 480314878}
   - component: {fileID: 480314877}
   - component: {fileID: 480314880}
+  - component: {fileID: 480314881}
   m_Layer: 5
   m_Name: Next_Button
   m_TagString: Untagged
@@ -484,9 +485,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 480314880}
-        m_TargetAssemblyTypeName: ChangeScene, Assembly-CSharp
-        m_MethodName: GoToNewGame2Scenes
+      - m_Target: {fileID: 480314881}
+        m_TargetAssemblyTypeName: EnterNameUI, Assembly-CSharp
+        m_MethodName: OnNext
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -558,6 +559,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f51d3e66b0d56a64ba99d08a9a4bd2b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &480314881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 480314875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 301d43a40c4dfdf41a22441258821061, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameInput: {fileID: 1009712482}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1406,6 +1420,11 @@ GameObject:
   - component: {fileID: 1275442312}
   m_Layer: 0
   m_Name: SfxMusic
+  - component: {fileID: 1270534098}
+  - component: {fileID: 1270534097}
+  - component: {fileID: 1270534099}
+  m_Layer: 0
+  m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1542,6 +1561,8 @@ GameObject:
   m_IsActive: 1
 --- !u!82 &1448298080
 AudioSource:
+--- !u!114 &1270534097
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1638,6 +1659,28 @@ AudioSource:
     m_PostInfinity: 2
     m_RotationOrder: 4
 --- !u!4 &1448298081
+  m_GameObject: {fileID: 1270534096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c0129928e8ac7942a4b4f0256b66878, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentData:
+    playerName: 
+    selectedCharacter: 
+    currentMapLevel: 1
+    gold: 0
+    unspentSkillPoints: 0
+    equippedSword: 
+    equippedArmor: 
+    healthLevel: 1
+    powerLevel: 1
+    attackSpeedLevel: 1
+    moveSpeedLevel: 1
+  currentSaveFileName: 
+  saveDirectory: 
+  pendingPlayerName: 
+--- !u!4 &1270534098
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1670,6 +1713,16 @@ GameObject:
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!114 &1523041202
+  m_GameObject: {fileID: 1270534096}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.16803, y: -0.5976, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1270534099
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1702,6 +1755,13 @@ Transform:
   - {fileID: 1275442313}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_GameObject: {fileID: 1270534096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 301d43a40c4dfdf41a22441258821061, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameInput: {fileID: 1009712482}
 --- !u!1 &1784114848
 GameObject:
   m_ObjectHideFlags: 0
@@ -2248,6 +2308,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 519420032}
+  - {fileID: 1270534098}
   - {fileID: 588199375}
   - {fileID: 1978201090}
   - {fileID: 1054990509}

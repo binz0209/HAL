@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c99a1527f6b6a154b83c27a13400fd82, type: 3}
+  m_Name: VanAn_Default
+  m_EditorClassIdentifier: 
+  id: TuLinh
+  backPath: 7_Back/Back_1
+  clothBodyPath: 2_Cloth/Cloth_9
+  bodyArmorPath: 5_Armor/Armor_5
+  hairPath: 
+  headPath: 1_Body/Human_1
+  faceHairPath: 1_FaceHair/FaceHair_1
+  rightEyePath: 0_Eye/Eye2
+  leftEyePath: 0_Eye/Eye2
+  leftArmClothPath: 2_Cloth/Cloth_3
+  leftShoulderArmorPath: 5_Armor/Armor_2
+  weaponLeftPath: 
+  shieldLeftPath: 6_Weapons/7_Shield/WoodShield1
+  rightArmClothPath: 2_Cloth/Cloth_3
+  rightShoulderArmorPath: 5_Armor/Armor_2
+  weaponRightPath: 6_Weapons/0_Sword/Sword_1
+  shieldRightPath: 
+  rightFootPath: 1_Body/Human_1
+  rightClothPath: 3_Pant/Foot_2
+  leftFootPath: 1_Body/Human_1
+  leftClothPath: 3_Pant/Foot_2
