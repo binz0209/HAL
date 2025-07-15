@@ -8,11 +8,14 @@ public class EnemyHealth : MonoBehaviour
     private Rigidbody2D rb;
     private bool isDead = false;
 
+    private DropCoin coinSpawner;
+
     void Start()
     {
         currentHealth = maxHealth;
         animator = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        coinSpawner = GetComponent<DropCoin>(); // lấy DropCoin script nếu có
     }
 
     public void TakeDamage(float damage)
@@ -30,6 +33,19 @@ public class EnemyHealth : MonoBehaviour
     private void Die()
     {
         isDead = true;
+
+        Debug.Log($"[EnemyHealth] {gameObject.name} died.");
+
+        // Gọi DropCoins nếu có
+        if (coinSpawner != null)
+        {
+            Debug.Log("[EnemyHealth] Calling DropCoins...");
+            coinSpawner.DropCoins();
+        }
+        else
+        {
+            Debug.LogWarning("[EnemyHealth] DropCoin component NOT found.");
+        }
 
         if (animator != null)
         {
@@ -49,10 +65,8 @@ public class EnemyHealth : MonoBehaviour
             col.enabled = false;
         }
 
-
         EnemyTrigger.enemyCount--;
 
         Destroy(gameObject, 1f);
     }
-
 }
