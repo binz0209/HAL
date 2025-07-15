@@ -22,7 +22,6 @@ public class HealthManager : MonoBehaviour
 		healthAmount = Mathf.Clamp(healthAmount, 0, 100);
 		if (Health != null)
 			Health.fillAmount = healthAmount / 100f;
-    AudioManager.Instance?.PlayDamaged();
 	}
 
 	void OnTriggerEnter2D(Collider2D collision)

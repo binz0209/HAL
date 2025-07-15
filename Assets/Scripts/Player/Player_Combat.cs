@@ -1,79 +1,67 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Player_Combat : MonoBehaviour
 {
-    private Animator animator;
-    public float knockbackForce = 10f;               // L?c knockback cho enemy khi player ?�nh
-    public float knockbackFromEnemyForce = 10f;      // L?c knockback khi b? enemy ?�nh
-    public float damageFromEnemy = 10f;              // S�t th??ng khi b? enemy ?�nh
+	private Animator animator;
 
-    public Collider2D armCollider;
+	[Header("Combat")]
+	public float damage = 100f;
+	public float knockbackForce = 10f; // Knockback force to enemy
 
-    private bool isAttacking = false;
+	[Header("Hitbox")]
+	public Collider2D armCollider;
 
-    void Start()
-    {
-        animator = GetComponentInParent<Animator>();
+	private bool isAttacking = false;
 
-        if (animator == null)
-            Debug.LogError("Animator kh�ng t�m th?y!");
+	void Start()
+	{
+		animator = GetComponentInParent<Animator>();
 
-        if (armCollider != null)
-            armCollider.enabled = false;
-    }
+		if (animator == null)
+			Debug.LogError("Animator not found!");
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.J) && !isAttacking)
-        {
-            if (animator != null)
-                animator.SetTrigger("2_Attack");
+		if (armCollider != null)
+			armCollider.enabled = false;
+	}
 
-            isAttacking = true;
-        }
+	void Update()
+	{
+		if (Input.GetKeyDown(KeyCode.J) && !isAttacking)
+		{
+			animator?.SetTrigger("2_Attack");
+			isAttacking = true;
+		}
+	}
 
-        if (Input.GetKeyUp(KeyCode.J) && isAttacking)
-        {
-            if (armCollider != null)
-                armCollider.enabled = false;
-        }
-    }
+	// Called by animation event
+	public void ActivateCollider()
+	{
+		if (armCollider != null)
+			armCollider.enabled = true;
+	}
 
-    public void ActivateCollider()
-    {
-        if (armCollider != null && isAttacking)
-            armCollider.enabled = true;
-    }
+	// Called by animation event
+	public void DeactivateCollider()
+	{
+		if (armCollider != null)
+			armCollider.enabled = false;
 
-    public void DeactivateCollider()
-    {
-        if (armCollider != null && isAttacking)
-        {
-            armCollider.enabled = false;
-            isAttacking = false;
-        }
-    }
+		isAttacking = false;
+	}
 
-    //private void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    if (collision.CompareTag("Enemy"))
-    //    {
-    //        Vector2 knockbackDirection = collision.transform.position - transform.position;
-    //        EnemyFollow enemy = collision.GetComponent<EnemyFollow>();
-    //        if (enemy != null)
-    //            enemy.TakeDamageAndKnockback(knockbackDirection, knockbackForce);
-    //    }
-    //    else if (collision.CompareTag("Enemy_We"))
-    //    {
-    //        Vector2 knockbackDir = transform.position - collision.transform.position;
+	private void OnTriggerEnter2D(Collider2D collision)
+	{
+		if (!isAttacking) return;
 
-    //        Rigidbody2D rb = GetComponent<Rigidbody2D>();
-    //        if (rb != null)
-    //            rb.AddForce(knockbackDir.normalized * knockbackFromEnemyForce, ForceMode2D.Impulse);
+		EnemyHealth enemyHealth = collision.GetComponent<EnemyHealth>();
+		EnemyFollow enemyFollow = collision.GetComponent<EnemyFollow>();
 
-    //        HealthManager healthManager = GetComponent<HealthManager>();
-    //        if (healthManager != null)
-    //            healthManager.TakeDamage(damageFromEnemy, knockbackDir, knockbackFromEnemyForce);
-    //    }
-    //}
+		if (enemyHealth != null && enemyFollow != null)
+		{
+			enemyHealth.TakeDamage(damage);
+
+			Vector2 knockbackDirection = (collision.transform.position - transform.position).normalized;
+			enemyFollow.TakeDamageAndKnockback(knockbackDirection, knockbackForce);
+		}
+	}
 }
