@@ -2,93 +2,93 @@
 
 public class EnemyTrigger : MonoBehaviour
 {
-	[Header("Enemy Settings")]
-	public Transform enemyGroup;
+    [Header("Enemy Settings")]
+    public Transform enemyGroup;
 
-	[Header("Door Settings")]
-	public Collider2D doorCollider;  
+    [Header("Door Settings")]
+    public Collider2D doorCollider;
 
-	private bool roomLocked = false;
+    private bool roomLocked = false;
 
-	public static int enemyCount;
+    public static int enemyCount;
 
-	
 
-	private void OnTriggerEnter2D(Collider2D other)
-	{
-		if (!other.CompareTag("Player")) return;
 
-		Debug.Log("Player triggered EnemyTrigger!");
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (!other.CompareTag("Player")) return;
 
-		if (enemyGroup == null)
-		{
-			Debug.LogWarning("No enemy group assigned!");
-			return;
-		}
+        Debug.Log("Player triggered EnemyTrigger!");
 
-		enemyCount = 0;
+        if (enemyGroup == null)
+        {
+            Debug.LogWarning("No enemy group assigned!");
+            return;
+        }
 
-		foreach (Transform child in enemyGroup)
-		{
-			EnemyFollow enemy = child.GetComponent<EnemyFollow>();
-			if (enemy != null)
-			{
-				enemy.ActivateChase();
-				enemyCount++;
-			}
-		}
+        enemyCount = 0;
 
-		Debug.Log("Enemy Count: " + enemyCount);
+        foreach (Transform child in enemyGroup)
+        {
+            EnemyFollow enemy = child.GetComponent<EnemyFollow>();
+            if (enemy != null)
+            {
+                enemy.ActivateChase();
+                enemyCount++;
+            }
+        }
 
-		
-		if (doorCollider != null)
-		{
-			doorCollider.isTrigger = false;
-			Debug.Log("Door locked (isTrigger = false)");
-		}
+        Debug.Log("Enemy Count: " + enemyCount);
 
-		roomLocked = true;
 
-		
-	}
+        if (doorCollider != null)
+        {
+            doorCollider.isTrigger = false;
+            Debug.Log("Door locked (isTrigger = false)");
+        }
 
-	private void Update()
-	{
-		if (!roomLocked) return;
+        roomLocked = true;
 
-		if (AllEnemiesDefeated())
-		{
-			UnlockRoom();
-		}
-	}
 
-	bool AllEnemiesDefeated()
-	{
-		foreach (Transform child in enemyGroup)
-		{
-			if (child != null)
-				return false;
-		}
-		return true;
-	}
+    }
 
-	public static void ReportEnemyDied()
-	{
-		enemyCount--;
-		Debug.Log("Enemy died. Remaining: " + enemyCount);
-	}
+    private void Update()
+    {
+        if (!roomLocked) return;
 
-	void UnlockRoom()
-	{
-		Debug.Log("UnlockRoom() called");
-		roomLocked = false;
+        if (AllEnemiesDefeated())
+        {
+            UnlockRoom();
+        }
+    }
 
-		if (doorCollider != null)
-		{
-			doorCollider.isTrigger = true;
-			Debug.Log("Door unlocked (isTrigger = true)");
-		}
+    bool AllEnemiesDefeated()
+    {
+        foreach (Transform child in enemyGroup)
+        {
+            if (child != null)
+                return false;
+        }
+        return true;
+    }
 
-		Destroy(gameObject);
-	}
+    public static void ReportEnemyDied()
+    {
+        enemyCount--;
+        Debug.Log("Enemy died. Remaining: " + enemyCount);
+    }
+
+    void UnlockRoom()
+    {
+        Debug.Log("UnlockRoom() called");
+        roomLocked = false;
+
+        if (doorCollider != null)
+        {
+            doorCollider.isTrigger = true;
+            Debug.Log("Door unlocked (isTrigger = true)");
+        }
+
+
+    }
 }
