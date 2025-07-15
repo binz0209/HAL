@@ -87,7 +87,6 @@ public class SpumController : MonoBehaviour
         var allSprites = Resources.LoadAll<Sprite>(fullPath);
         if (allSprites == null || allSprites.Length == 0)
         {
-            Debug.LogError($"❌ LoadSubSprite: Không tìm thấy file: {fullPath}");
             return null;
         }
 
@@ -96,7 +95,6 @@ public class SpumController : MonoBehaviour
             Debug.Log($"🔎 Found SubSprite: {s.name} in {fullPath}");
             if (s.name == subName)
             {
-                Debug.Log($"✅ Match: {subName}");
                 return s;
             }
         }

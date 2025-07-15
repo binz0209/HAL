@@ -13,16 +13,23 @@ MonoBehaviour:
   m_Name: XHum_Default
   m_EditorClassIdentifier: 
   id: TuLinh
-  backPath: '7_Back/Back_1.png '
-  clothBodyPath: '2_Cloth/Cloth_3.png '
-  bodyArmorPath: '5_Armor/Armor_2.png '
-  hairPath: '0_Hair/Hair_1.png '
-  headPath: '1_Body/Human_1.png '
-  faceHairPath: 
-  eyePath: '0_Eye/Eye2.png '
-  armClothPath: '2_Cloth/Cloth_3.png '
-  shoulderArmorPath: '5_Armor/Armor_2.png '
-  weaponPath: '6_Weapons/0_Sword/Sword_1.png '
-  shieldPath: '6_Weapons/7_Shield/WoodShield1.png '
-  footPath: '1_Body/Human_1.png '
-  footClothPath: '3_Pant/Foot_2.png '
+  backPath: 7_Back/Back_3
+  clothBodyPath: 2_Cloth/Cloth_9
+  bodyArmorPath: 5_Armor/Armor_8
+  hairPath: 0_Hair/Hair_3
+  headPath: 1_Body/Human_1
+  faceHairPath: 1_FaceHair/FaceHair_2
+  rightEyePath: 0_Eye/Eye0
+  leftEyePath: 0_Eye/Eye0
+  leftArmClothPath: 
+  leftShoulderArmorPath: 5_Armor/Armor_8
+  weaponLeftPath: 
+  shieldLeftPath: 6_Weapons/7_Shield/WoodShield4
+  rightArmClothPath: 
+  rightShoulderArmorPath: 5_Armor/Armor_8
+  weaponRightPath: 6_Weapons/4_Spear/Soon_Spear
+  shieldRightPath: 
+  rightFootPath: 
+  rightClothPath: Foot_2
+  leftFootPath: 
+  leftClothPath: Foot_2
