@@ -1,29 +1,22 @@
 using TMPro;
 using UnityEngine;
 
-public class ShopUI : MonoBehaviour
+public class VictoryUI : MonoBehaviour
 {
-    // References to the TMP UI elements in the scene
-    public TMP_Text healthText;
-    public TMP_Text damageText;
-    public TMP_Text coinText;
-    public TMP_Text healthCost;
-    public TMP_Text damageCost;
-
-    // References to the player's data (could be fetched from SaveManager or PlayerCharacterData)
+    public TextMeshProUGUI playerNameText;
+    public TextMeshProUGUI statText;
     private SaveData playerData;
     private float health;
     private float power;
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        // Retrieve the saved player data
         playerData = SaveManager.Instance.currentData;
-
-        // Update UI elements on start
         UpdateUI();
     }
 
-    public void UpdateUI()
+    // Update is called once per frame
+    void UpdateUI()
     {
         if (SaveManager.Instance.currentData.selectedCharacter.Equals("XHum"))
         {
@@ -40,10 +33,10 @@ public class ShopUI : MonoBehaviour
             health = 200f + SaveManager.Instance.currentData.healthLevel * 10f;
             power = 80f + SaveManager.Instance.currentData.powerLevel * 5f;
         }
-        healthText.text = "HP: " + health.ToString();
-        damageText.text = "DMG: " + power.ToString();
-        coinText.text = playerData.gold.ToString();
-        healthCost.text = (playerData.healthLevel * 5).ToString() + "G";
-        damageCost.text = (playerData.powerLevel * 10).ToString() + "G";
+        playerNameText.text = "Gud Game " + playerData.playerName;
+        statText.text = "Level: " + playerData.currentMapLevel +
+                        "\nHP: " + health.ToString() +
+                        "\nDMG: " + power.ToString() +
+                        "\nGold: " + playerData.gold.ToString();
     }
 }

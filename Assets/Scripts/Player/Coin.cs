@@ -14,7 +14,7 @@ public class Coin : MonoBehaviour
         }
 
         // Bật lại sau 2s
-        Invoke(nameof(EnableCollect), 2f);
+        Invoke(nameof(EnableCollect), 0.5f);
     }
 
     private void EnableCollect()

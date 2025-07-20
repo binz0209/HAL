@@ -17,7 +17,7 @@ MonoBehaviour:
   spumPrefab: {fileID: 5836857197505123814, guid: de5fd31d217351446abe758d759f6e27,
     type: 3}
   baseHealthLevel: 100
-  basePowerLevel: 50
+  basePowerLevel: 100
   baseAttackSpeedLevel: 1
   baseMoveSpeedLevel: 2
   defaultPartData: {fileID: 11400000, guid: e757c5e026c82c748a200a5cc2abe326, type: 2}

@@ -66,4 +66,17 @@ public class SaveManager : MonoBehaviour
         return File.Exists(fullPath);
     }
 
+    public void ClearSave()
+    {
+        string fullPath = Path.Combine(saveDirectory, saveFileName);
+        if (File.Exists(fullPath))
+        {
+            File.Delete(fullPath);
+            Debug.Log("Save file cleared.");
+        }
+        else
+        {
+            Debug.LogWarning("No save file to clear.");
+        }
+    }
 }

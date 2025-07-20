@@ -12,7 +12,18 @@ public class WeaponDamage : MonoBehaviour
 
         if (enemyHealth != null)
         {
-            enemyHealth.TakeDamage(SaveManager.Instance.currentData.powerLevel);
+            if (SaveManager.Instance.currentData.selectedCharacter.Equals("XHum"))
+            {
+                enemyHealth.TakeDamage(60f + SaveManager.Instance.currentData.powerLevel * 5f);
+            }
+            else if (SaveManager.Instance.currentData.selectedCharacter.Equals("VanAn"))
+            {
+                enemyHealth.TakeDamage(100f + SaveManager.Instance.currentData.powerLevel * 5f);
+            }
+            else if (SaveManager.Instance.currentData.selectedCharacter.Equals("TuLinh"))
+            {
+                enemyHealth.TakeDamage(80f + SaveManager.Instance.currentData.powerLevel * 5f);
+            }
         }
 
         if (enemyFollow != null)

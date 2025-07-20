@@ -8,6 +8,7 @@ TagManager:
   - Sword
   - Enemy_We
   - Teleport
+  - Tree
   layers:
   - Default
   - TransparentFX

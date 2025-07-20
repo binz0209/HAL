@@ -22,6 +22,15 @@ public class SettingsMenuController : MonoBehaviour
         // Kiểm tra trạng thái hiện tại và chuyển sang trạng thái ngược lại
         bool isActive = settingsMenu.activeSelf;
         settingsMenu.SetActive(!isActive);
+        // pause + resume
+        if (isActive)
+        {
+            Time.timeScale = 1f; // Resume game
+        }
+        else
+        {
+            Time.timeScale = 0f; // Pause game
+        }
     }
     public void GoToMainMenuScenes()
     {

@@ -38,4 +38,18 @@ public class ChangeScene : MonoBehaviour
             LoadingManager.Instance.StartOperation(mapToLoad, LoadingManager.OperationMode.LoadGame);
         }
     }
+
+    //Delete data after deadth and changescene main menu
+    public void DeleteDataAndGoToMainMenu()
+    {
+        SaveManager.Instance.ClearSave();
+        SceneManager.LoadScene(1);
+    }
+
+    //Delete Data and Quit Game
+    public void DeleteDataAndQuitGame()
+    {
+        SaveManager.Instance.ClearSave();
+        Application.Quit();
+    }
 }

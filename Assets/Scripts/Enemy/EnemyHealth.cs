@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
@@ -9,13 +10,52 @@ public class EnemyHealth : MonoBehaviour
     private bool isDead = false;
 
     private DropCoin coinSpawner;
+    private static int totalEnemyCount = 12;
+
+    // Flash effect
+    public float flashDuration = 0.2f;
+    private bool isFlashing = false;
+    private float flashTimer = 0f;
+    private SpriteRenderer[] spriteRenderers;
+    private Color[] originalColors;
 
     void Start()
     {
         currentHealth = maxHealth;
         animator = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody2D>();
-        coinSpawner = GetComponent<DropCoin>(); // lấy DropCoin script nếu có
+        coinSpawner = GetComponent<DropCoin>();
+
+        // Lưu lại các SpriteRenderer để đổi màu
+        spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
+        originalColors = new Color[spriteRenderers.Length];
+        for (int i = 0; i < spriteRenderers.Length; i++)
+        {
+            originalColors[i] = spriteRenderers[i].color;
+        }
+    }
+
+    void Update()
+    {
+        if (isFlashing)
+        {
+            flashTimer += Time.deltaTime;
+            if (flashTimer <= flashDuration)
+            {
+                foreach (var sr in spriteRenderers)
+                {
+                    sr.color = Color.red;
+                }
+            }
+            else
+            {
+                for (int i = 0; i < spriteRenderers.Length; i++)
+                {
+                    spriteRenderers[i].color = originalColors[i];
+                }
+                isFlashing = false;
+            }
+        }
     }
 
     public void TakeDamage(float damage)
@@ -23,6 +63,12 @@ public class EnemyHealth : MonoBehaviour
         if (isDead) return;
 
         currentHealth -= damage;
+
+        if (!isFlashing)
+        {
+            isFlashing = true;
+            flashTimer = 0f;
+        }
 
         if (currentHealth <= 0)
         {
@@ -34,17 +80,12 @@ public class EnemyHealth : MonoBehaviour
     {
         isDead = true;
 
-        Debug.Log($"[EnemyHealth] {gameObject.name} died.");
+        // Use the public method to decrement totalEnemyCount  
+        EnemyTrigger.ReportEnemyDied();
 
-        // Gọi DropCoins nếu có
         if (coinSpawner != null)
         {
-            Debug.Log("[EnemyHealth] Calling DropCoins...");
             coinSpawner.DropCoins();
-        }
-        else
-        {
-            Debug.LogWarning("[EnemyHealth] DropCoin component NOT found.");
         }
 
         if (animator != null)
@@ -55,7 +96,6 @@ public class EnemyHealth : MonoBehaviour
         if (rb != null)
         {
             rb.linearVelocity = Vector2.zero;
-            //rb.isKinematic = true;
             rb.simulated = false;
         }
 
@@ -67,6 +107,17 @@ public class EnemyHealth : MonoBehaviour
 
         EnemyTrigger.enemyCount--;
 
-        Destroy(gameObject, 1f);
+        StartCoroutine(HandleDeathCoroutine());
+    }
+
+    private IEnumerator HandleDeathCoroutine()
+    {
+        // Tắt toàn bộ script attack nếu có
+        Enemy_Combat combat = GetComponentInChildren<Enemy_Combat>();
+        if (combat != null)
+            combat.enabled = false;
+
+        yield return new WaitForSeconds(1f);
+        Destroy(gameObject);
     }
 }

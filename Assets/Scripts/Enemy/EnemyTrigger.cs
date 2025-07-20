@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class EnemyTrigger : MonoBehaviour
 {
@@ -18,7 +19,8 @@ public class EnemyTrigger : MonoBehaviour
     private bool teleportSpawned = false;
 
     public static int enemyCount;
-
+    private Collider2D teleportCollider;
+    private static int totalEnemyCount = 0;
     private void Start()
     {
         if (doorCollider != null)
@@ -29,6 +31,11 @@ public class EnemyTrigger : MonoBehaviour
         if (teleportObject != null)
         {
             teleportObject.SetActive(false);
+            teleportCollider = teleportObject.GetComponent<Collider2D>();
+            if (teleportCollider != null)
+            {
+                teleportCollider.enabled = false;
+            }
         }
     }
 
@@ -95,6 +102,8 @@ public class EnemyTrigger : MonoBehaviour
     public static void ReportEnemyDied()
     {
         enemyCount--;
+        totalEnemyCount--;
+        Debug.Log("Total Enemy Count Set: " + totalEnemyCount);
     }
 
     void UnlockRoom()
@@ -106,11 +115,20 @@ public class EnemyTrigger : MonoBehaviour
             doorCollider.isTrigger = true;
         }
 
-        if (teleportObject != null)
+        if (SaveManager.Instance.currentData.currentMapLevel == 2 && (totalEnemyCount % 12) == 0)
+        {
+            // Change to Victory Scene
+            SaveManager.Instance.currentData.gold += CoinUIManager.Instance.getCoinValue();
+            SaveManager.Instance.Save();
+            SceneManager.LoadScene(8);
+        }
+
+        if (teleportObject != null && (totalEnemyCount % 12) == 0)
         {
             teleportSpawned = true;
             StartCoroutine(FadeInTeleport());
         }
+
     }
 
     IEnumerator FadeInTeleport()
@@ -141,6 +159,12 @@ public class EnemyTrigger : MonoBehaviour
 
         color.a = 1f;
         sr.color = color;
+
+        yield return new WaitForSeconds(2f);
+        if (teleportCollider != null)
+        {
+            teleportCollider.enabled = true;
+        }
     }
 
 }

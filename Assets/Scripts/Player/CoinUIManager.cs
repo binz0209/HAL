@@ -6,7 +6,7 @@ public class CoinUIManager : MonoBehaviour
     public static CoinUIManager Instance;
     private int coin;
 
-    public TextMeshProUGUI goldText;  // <- TextMeshPro
+    public TextMeshProUGUI goldText;
     public TextMeshProUGUI levelText;
 
     private int coinValue = 0;
@@ -20,7 +20,7 @@ public class CoinUIManager : MonoBehaviour
 
     private void Start()
     {
-        levelText.text = "Level: " + SaveManager.Instance.currentData.currentMapLevel.ToString();
+        levelText.text = SaveManager.Instance.currentData.playerName + " - Level: " + SaveManager.Instance.currentData.currentMapLevel.ToString();
         LoadGold();
     }
 
